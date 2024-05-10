@@ -1,0 +1,63 @@
+unit Buscar1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Vcl.DBCtrls, Vcl.Buttons, Data.Win.ADODB, Data.DB;
+
+type
+  TFormBuscar = class(TForm)
+    btnNewArticulo: TSpeedButton;
+    LAgArticulo: TLabel;
+    LAgMarca: TLabel;
+    ADOConAgregar: TADOConnection;
+    ADOQueryAArti: TADOQuery;
+    DataSource1: TDataSource;
+    Articulo: TEdit;
+    Marca: TEdit;
+    procedure FormCreate(Sender: TObject);
+    procedure btnNewArticuloClick(Sender: TObject);
+    function DejarDatos(): String;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormBuscar: TFormBuscar;
+
+implementation
+
+{$R *.dfm}
+
+uses Empresa;
+
+procedure TFormBuscar.btnNewArticuloClick(Sender: TObject);
+begin
+  ADOQueryAArti.SQL.Clear;
+  ADOQueryAArti.SQL.Text := 'INSERT INTO Articulo ( NombreArticulo, Marca)' +
+                               'VALUES ( ' + QuotedSTR(Articulo.Text) + ',' +  QuotedSTR(Marca.Text) +')';
+
+   if MessageDlg('¿Desea agregar un nuevo articulo?',mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      begin
+         DejarDatos();
+      end;
+   ADOQueryAArti.Open;
+   close;
+end;
+
+function TFormBuscar.DejarDatos: String;
+begin
+  Articulo.Text := '';
+  Marca.Text:='';
+end;
+
+procedure TFormBuscar.FormCreate(Sender: TObject);
+begin
+ //hola
+end;
+
+end.

@@ -1,0 +1,54 @@
+object DatosDM: TDatosDM
+  Height = 750
+  Width = 1000
+  PixelsPerInch = 120
+  object DataSourceProveedor: TDataSource
+    DataSet = ADOQueryProveedor
+    Left = 240
+    Top = 120
+  end
+  object ADOConnection1: TADOConnection
+    ConnectionString = 
+      'Provider=SQLOLEDB.1;Password=GRUPOCIE-2024;Persist Security Info' +
+      '=True;User ID=sa;Initial Catalog=Empresa;Data Source=CARMEN-UTRI' +
+      'LLAS\SQLEXPRESS'
+    LoginPrompt = False
+    Provider = 'SQLOLEDB.1'
+    Left = 392
+    Top = 24
+  end
+  object ADOQueryProveedor: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM Proveedor')
+    Left = 568
+    Top = 120
+  end
+  object ADOQueryCliente: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM Cliente')
+    Left = 576
+    Top = 192
+  end
+  object ADOQueryArticulo: TADOQuery
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT * FROM Articulo')
+    Left = 576
+    Top = 276
+  end
+  object DataSourceArticulo: TDataSource
+    DataSet = ADOQueryArticulo
+    Left = 240
+    Top = 288
+  end
+  object DataSourceCliente: TDataSource
+    DataSet = ADOQueryCliente
+    Left = 232
+    Top = 192
+  end
+end

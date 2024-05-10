@@ -1,0 +1,33 @@
+unit Borrar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Vcl.DBCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFBorrar = class(TForm)
+    FTablaBorrar: TDBLabeledEdit;
+    DBEdit1: TDBEdit;
+    BorrarLabel1: TLabel;
+    BorrarLabel2: TLabel;
+    Edit1: TEdit;
+    DBGrid1: TDBGrid;
+    btnBorrarBorrar: TButton;
+    btnBorrarSalir: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FBorrar: TFBorrar;
+
+implementation
+
+{$R *.dfm}
+{Botón salir de Form borrar}
+end.

@@ -1,0 +1,16 @@
+program uEmpresa;
+
+uses
+  Vcl.Forms,
+  Empresa in 'Empresa.pas' {Form2},
+  Buscar1 in 'Buscar1.pas' {Buscar};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TBuscar, Buscar);
+  Application.Run;
+end.

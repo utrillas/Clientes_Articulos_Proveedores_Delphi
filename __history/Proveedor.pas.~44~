@@ -1,0 +1,52 @@
+unit Proveedor;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.ExtCtrls,
+  Vcl.DBCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
+
+type
+  TFormProveedor = class(TForm)
+    btnAgProveedor: TSpeedButton;
+    Panel1: TPanel;
+    LAgArticulo: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    PVendedor: TDBEdit;
+    PTelefono: TDBEdit;
+    PEmpresa: TDBEdit;
+    function DejarDatos(): String;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormProveedor: TFormProveedor;
+
+implementation
+
+{$R *.dfm}
+
+uses Empresa, DMDatos;
+
+
+function TFormProveedor.DejarDatos: String;
+begin
+  PEmpresa.Text := '';
+  PVendedor.Text:= '';
+  PTelefono.Text:= '';
+end;
+
+procedure TFormProveedor.FormCreate(Sender: TObject);
+begin
+  DatosDM.DataSourceProveedor.Edit;
+end;
+
+
+
+end.
